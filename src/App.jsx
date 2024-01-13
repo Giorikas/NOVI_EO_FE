@@ -3,7 +3,6 @@ import { useState } from 'react';
 import VappLogo from './assets/VappLogo.svg';
 import DWP from './assets/LandingPageImg.jpg'
 import {Link, Route, Routes} from 'react-router-dom';
-import Header from "./components/header/Header"
 import Footer from "./components/footer/Footer"
 import Navigation from "./components/navigation/Navigation.jsx";
 import CommentSection from "./components/commentsection/CommentSection.jsx";
@@ -13,10 +12,9 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 
 function App() {
 
-
   return (
     <>
-        <Header />
+
         <Navigation />
         <main>
             <Routes>

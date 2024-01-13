@@ -1,11 +1,15 @@
 import './Header.css'
+import {useState} from "react";
 
-function Header(){
+function Header({title}){
+
     return(<>
 
         <header>
-            Text!
-            {/*<div className="headerleft">
+            <h3> {title} </h3>
+
+            {/*Text!
+            <div className="headerleft">
                 <p>©2024 JHx</p>
             </div>
             <div className="headercenter">
@@ -13,8 +17,8 @@ function Header(){
             </div>
             <div className="headerright">
                 <p>©2024 JHx</p>
-            </div>
-*/}
+            </div>*/}
+
         </header>
 
     </>);
