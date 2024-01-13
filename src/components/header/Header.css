@@ -1,0 +1,22 @@
+.wrapper {
+    overflow: auto;
+}
+.headercenter {
+    float: left;
+    width: 30%px;
+    background: red;
+}
+.headerright {
+    float: right;
+    width: 30%;
+    background: green;
+    text-align: right;
+
+}
+
+.headerleft {
+    float: left;
+    width: 30%;
+    background: blue;
+
+}

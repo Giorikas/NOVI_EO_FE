@@ -1,0 +1,22 @@
+.wrapper {
+    overflow: auto;
+}
+.center {
+    float: left;
+    width: 30%px;
+    background: red;
+}
+.right {
+    float: right;
+    width: 30%;
+    background: green;
+    text-align: right;
+
+}
+
+.left {
+    float: left;
+    width: 30%;
+    background: blue;
+
+}

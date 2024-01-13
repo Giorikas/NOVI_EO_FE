@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="nl-NL" width="800" height="450">
+    <title>VAPP Logo</title>
+    <desc>VAPP Logo</desc>
+    <style>
+
+
+        text {
+            font-family: "Miltonian Tattoo", serif;
+            font-size: 80px;
+        }
+
+        .wit1 {
+            /* letter-spacing: -10px; */
+            font-family: "Arial", serif;
+            text-anchor: middle;
+            fill: #fff;
+            stroke: #fff;
+
+        }
+
+        .wit {
+            text-anchor: start;
+            fill: #fff;
+            stroke: #fff;
+        }
+
+        .wit2 {
+            text-anchor: end;
+            fill: #fff;
+            stroke: #fff;
+
+        }
+    </style>
+    <rect fill="#000080" width="100%" height="100%" />
+    <text class="wit1" y="55%" x="50%">
+        VAPP
+
+    </text>
+</svg>

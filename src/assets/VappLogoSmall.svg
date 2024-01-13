@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="nl-NL" width="80" height="45">
+    <title>VAPP Logo</title>
+    <desc>VAPP Logo</desc>
+    <style>
+
+        .wit1 {
+            /* letter-spacing: -10px; */
+            font-family: "Arial", serif;
+            font-size: 20px;
+            text-anchor: middle;
+            fill: #fff;
+            stroke: #fff;
+
+    </style>
+    <rect fill="#000080" width="100%" height="100%" />
+    <text class="wit1" y="62%" x="50%">
+        VAPP
+
+    </text>
+</svg>
