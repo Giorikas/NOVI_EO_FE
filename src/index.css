@@ -1,3 +1,5 @@
+/* ===== GENERAL: COLORS AND FONTS======================================== */
+
 :root {
 
   --color-bg: #ffffe0;  /* achtergrondkleur */
@@ -63,11 +65,17 @@ h3 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
+
+
+/* ===== FIELDSETS ======================================== */
+
+/* ===== BUTTONS ========================================== */
 
 button {
 
+  text-align: center;
   border-radius: 50%;
   border: 1px solid transparent;
   padding: 1em 1.2em;
@@ -90,13 +98,78 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.pill-button{
+
+  margin: 5px;
+  padding: 0px;
+  min-height: 60px;
+  max-height: 60px;
+  min-width: 60px;
+  font-size: 1.25rem;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 30px;
+  text-align: center;
+
+}
+
+.material-symbols-outlined{
+  font-family: Material-Symbols-Outlined;
+}
+
+button[type=submit]{
+  background-color: var(--color-ok);
+}
+button[type=submit]:hover{
+  color: var(--color-ok);
+  background-color: var(--color-secondary);
+  border-color: var(--color-ok);
+}
+
+
+/*===== FIELDSETS + LEGENDS + INPUTS=================*/
+
+fieldset {
+  display: block;
+  margin: 20px 1%;
+  margin-bottom: 20px;
+  padding: 0 auto;
+  padding: 15px 0;
+  border: 0;
+  border-top: 1px solid #DDD;
+  width: 98%;
+}
+
+fieldset:last-of-type {
+  margin-bottom: 0px;
+}
+
+legend {
+  display: table;
+  min-width: 0px;
+  max-width: 80%;
+  position: relative;
+  margin: auto;
+  padding: 5px 20px;
+  color: var(--color-primary);
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+input {
+  margin: 0 10px;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: var(--color-primary);
   }
 
 }
+
+
