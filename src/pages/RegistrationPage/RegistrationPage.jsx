@@ -2,27 +2,37 @@ import '../../index.css'
 import './RegistrationPage.css';
 
 import {useState} from "react";
+import chkSamePasswords from "../../helpers/chkSamePasswords.js";
+export default function RegistrationPage()
 
-export default function RegistrationPage() {
+
+{
     // initialiseer één state variabele met daarin een object aan form-waardes
     // let op: de namen van de keys moeten overeenkomen met de name-attributen van de velden
     const [formState, setFormState] = useState({
         firstname: '',
         lastname: '',
-
+        email: '',
+        password: '',
+        password2: '',
+        roleChoise: '',
 
     });
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        console.log(formState);
-    }
+        function handleSubmit(e) {
+            // chkSamePasswords({formState.password},{formState.password2});
+            e.preventDefault();
+            console.log(formState);
+        }
+
 
     // handleFormChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
     // alleen de object key van het bijbehorende inputveld wordt overschreven met een nieuwe waarde
     function handleFormChange(e) {
+
+
         const changedFieldName = e.target.name;
-        const newValue = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        const newValue = e.target.type === ("checkbox") ? e.target.checked : e.target.value;
 
         setFormState({
             ...formState,
@@ -32,19 +42,49 @@ export default function RegistrationPage() {
         console.log(`The value of input ${e.target.name} has just been set to ${e.target.value}`);
     }
 
+    function handleRadioChange(e) {
+        const newVal = e.target.value;
+        console.log(newVal)
+        formState.roleChoise = newVal;
+        console.log(`The value of input ${e.target.name} has just been set to ${e.target.value}`);
+    }
+
     return (
         <>
             <form onSubmit={handleSubmit}>
+
                 <fieldset>
                     <legend>Rol</legend>
-                    <label><input type="radio" name="roleChoise" value="ProjectLeader"
-                                  id="roleProjectLeader"/> Projectleider</label>
-                    <label><input type="radio" name="roleChoise" value="TrafficEngineer" id="roleTrafficEngineer"
-                                  defaultChecked/>Verkeerskundig
-                        Ontwerper</label>
-                    <label><input type="radio" name="roleChoise" value="CivilEngineer"
-                                  id="roleCivilEngineer"/> Civieltechnisch Ontwerper</label>
+                    <label htmlFor="roleProjectLeader">
+                        <input type="radio"
+                               name="roleChoise"
+                               value="ProjectLeader"
+                               checked={formState.roleChoise}
+                               id="roleProjectLeader"
+                               onChange={handleFormChange}
+                        /> Projectleider</label>
+                    <label htmlFor="roleTrafficEngineer">
+                        <input type="radio"
+                               name="roleChoise"
+                               value="TrafficEngineer"
+                               // checked={formState.roleChoise === "TrafficEngineer"}
+                               id="roleTrafficEngineer"
+                               onChange={handleRadioChange}
+                               defaultChecked
+                        />Verkeerskundig Ontwerper
+                    </label>
+
+                    <label htmlFor="roleCivilEngineer">
+                        <input type="radio"
+                               name="roleChoise"
+                               value="CivilEngineer"
+                               // checked={formState.roleChoise === "CivilEngineer"}
+                               id="roleCivilEngineer"
+                               onChange={handleRadioChange}
+                        /> Civieltechnisch Ontwerper
+                    </label>
                 </fieldset>
+
                 <fieldset>
                     <legend>Naam</legend>
                     <label htmlFor="details-firstname">
@@ -113,32 +153,4 @@ export default function RegistrationPage() {
         </>
     );
 }
-
-
-/*
-return (
-    <>
-        <form onSubmit={handleSubmit}>
-            <fieldset>
-                <legend>Register</legend>
-                <fieldset>
-                    <legend>Naam:</legend>
-                    <label htmlFor="details.firstName">Naam:
-
-                        <input
-                            type="text"
-                            name= "firstName"
-                            id= "details-firstName"
-                            value={formState.firtsName}
-                            onChange={handleFormChange}
-                        />
-                    </label>
-                </fieldset>
-            </fieldset>
-        </form>
-    </>
-)
-}
-
-*/
 
