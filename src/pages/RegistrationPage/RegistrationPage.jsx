@@ -2,9 +2,9 @@ import '../../index.css'
 import './RegistrationPage.css';
 
 import {useState} from "react";
-import chkSamePasswords from "../../helpers/chkSamePasswords.js";
-export default function RegistrationPage()
 
+// import chkSamePasswords from "../../helpers/chkSamePasswords.js";
+export default function RegistrationPage()
 
 {
     // initialiseer één state variabele met daarin een object aan form-waardes
@@ -59,7 +59,7 @@ export default function RegistrationPage()
                         <input type="radio"
                                name="roleChoise"
                                value="ProjectLeader"
-                               checked={formState.roleChoise}
+                               //checked={formState.roleChoise === "ProjectLeader"}
                                id="roleProjectLeader"
                                onChange={handleFormChange}
                         /> Projectleider</label>
@@ -67,7 +67,7 @@ export default function RegistrationPage()
                         <input type="radio"
                                name="roleChoise"
                                value="TrafficEngineer"
-                               // checked={formState.roleChoise === "TrafficEngineer"}
+                               //checked={formState.roleChoise === "TrafficEngineer"}
                                id="roleTrafficEngineer"
                                onChange={handleRadioChange}
                                defaultChecked
@@ -78,7 +78,7 @@ export default function RegistrationPage()
                         <input type="radio"
                                name="roleChoise"
                                value="CivilEngineer"
-                               // checked={formState.roleChoise === "CivilEngineer"}
+                               //checked={formState.roleChoise === "CivilEngineer"}
                                id="roleCivilEngineer"
                                onChange={handleRadioChange}
                         /> Civieltechnisch Ontwerper
