@@ -19,7 +19,6 @@ function LoginPage(){
 
         login(email);
 
-
     }
 
     return (
