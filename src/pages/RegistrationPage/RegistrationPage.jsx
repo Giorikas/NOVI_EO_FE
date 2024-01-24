@@ -18,18 +18,15 @@ export default function RegistrationPage()
         roleChoise: '',
 
     });
-
         function handleSubmit(e) {
             // chkSamePasswords({formState.password},{formState.password2});
             e.preventDefault();
             console.log(formState);
         }
 
-
     // handleFormChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
     // alleen de object key van het bijbehorende inputveld wordt overschreven met een nieuwe waarde
     function handleFormChange(e) {
-
 
         const changedFieldName = e.target.name;
         const newValue = e.target.type === ("checkbox") ? e.target.checked : e.target.value;
@@ -146,7 +143,7 @@ export default function RegistrationPage()
                         />
                     </label>
                 </fieldset>
-                <button className="pill-button" type="submit">
+                <button type="submit">
                     <span className="material-icons">&#xE163;</span>
                 </button>
             </form>

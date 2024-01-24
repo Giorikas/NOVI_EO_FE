@@ -1,9 +1,16 @@
 import './LoginPage.css';
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 
 
-function LoginPage(){
+export default function LoginPage(){
+
+    const {setHeaderStaticPage} = useContext(HeaderTitleContext)
+    useEffect(()=> {
+        setHeaderStaticPage("Login")
+    },[])
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -51,11 +58,11 @@ function LoginPage(){
                         />
                     </label>
                 </fieldset>
-                <button className="pill-button" type="submit">
+                <button type="submit">
                     <span className="material-icons">&#xE163;</span>
                 </button>
             </form>
         </>
     )
 }
-export default LoginPage;
+

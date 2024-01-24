@@ -7,7 +7,6 @@ import navTextChange from "../../helpers/navTextChange.js";
 function NavButton({
                        type,
                        children,
-                       textOnButton,
                        onClickNav,
                        onClickHeaderTitle,
                        /*   onMouseEnterNavTextChange, */
@@ -36,7 +35,7 @@ function NavButton({
                         onMouseLeave={() => {setNavtext((`{"t"}`))}}
             */
             >
-        <span className="material-icons">{textOnButton}</span>
+            {children}
 </button>
 )
     ;
