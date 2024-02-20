@@ -1,8 +1,8 @@
 import './CustomButton.css';
 
-function CustomButton({ type, children, onClick, disabled = false, variant }) {
+function CustomButton({ type, children, onClick, disabled = false, classname = "" }) {
     return (
-        <button type={type} disabled={disabled} onClick={onClick} className={variant === 'primary' ? 'button button-primary' : 'button button-invisible'}>
+        <button type={type} disabled={disabled} onClick={onClick} className={classname}>
             {children}
         </button>
     );

@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 
+//FUTURE: HASH PASSWORD, NAME, ETC.
 
 export default function LoginPage(){
 

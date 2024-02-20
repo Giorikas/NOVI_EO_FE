@@ -1,7 +1,7 @@
 import '../../index.css'
 import './RegistrationPage.css';
-
 import {useState} from "react";
+import axios from "axios";
 
 // import chkSamePasswords from "../../helpers/chkSamePasswords.js";
 export default function RegistrationPage()
@@ -18,10 +18,32 @@ export default function RegistrationPage()
         roleChoise: '',
 
     });
+
+        function postRegistration(formstate){
+            try {
+                const response = axios.post('http://localhost:8080/register', "stuff",
+                    {
+                        headers:
+                            {
+                                'Content-Type': 'application/json'
+                            }
+                    })
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
+
         function handleSubmit(e) {
             // chkSamePasswords({formState.password},{formState.password2});
             e.preventDefault();
             console.log(formState);
+
+            // This one works
+            //const result = axios.get('http://localhost:8080/register');
+
+            const result = axios.post('http://localhost:8080/register', "Hey Malaka");
+            console.log(result);
         }
 
     // handleFormChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
