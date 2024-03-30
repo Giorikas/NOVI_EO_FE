@@ -11,11 +11,11 @@ export default function RegistrationPage()
     // let op: de namen van de keys moeten overeenkomen met de name-attributen van de velden
     const [formState, setFormState] = useState({
         firstname: '',
-        lastname: '',
+        /*lastname: '',
         email: '',
         password: '',
         password2: '',
-        roleChoise: '',
+        roleChoise: '',*/
 
     });
 
@@ -42,8 +42,8 @@ export default function RegistrationPage()
             // This one works
             //const result = axios.get('http://localhost:8080/register');
 
-            const result = axios.post('http://localhost:8080/register', "Hey Malaka");
-            console.log(result);
+            const result = axios.post('http://localhost:8080/register', {"Test": "Malakas"});
+            //console.log(result);
         }
 
     // handleFormChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
@@ -69,6 +69,34 @@ export default function RegistrationPage()
     }
 
     return (
+        <>
+
+        <form onSubmit={handleSubmit}>
+
+        <fieldset>
+            <legend>Naam</legend>
+            <label htmlFor="details-firstname">
+                voornaam:
+                <input
+                    type="text"
+                    name="firstname"
+                    id="details-firstname"
+                    value={formState.firstname}
+                    onChange={handleFormChange}
+                    required
+                />
+            </label>
+        </fieldset>
+        <button type="submit">
+            <span className="material-icons">&#xE163;</span>
+        </button>
+
+        </form>
+
+        </>
+    );
+
+    /*return (
         <>
             <form onSubmit={handleSubmit}>
 
@@ -170,6 +198,6 @@ export default function RegistrationPage()
                 </button>
             </form>
         </>
-    );
+    );*/
 }
 

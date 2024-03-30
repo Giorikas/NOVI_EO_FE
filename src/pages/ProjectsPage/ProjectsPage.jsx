@@ -5,7 +5,7 @@ import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 import CustomButton from "../../components/custombutton/CustomButton.jsx";
 import lijst from "../../helpers/Projectenlijst.json";
 
-export default function projectsPage(){
+export default function ProjectsPage(){
 
     const [headerText, setHeaderText] = useState("Projecten");
 

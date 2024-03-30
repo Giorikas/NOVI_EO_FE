@@ -6,7 +6,7 @@ import Header from "../header/Header.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 
-function Navigation() {
+export default function Navigation() {
     const [navtext, setNavtext] = useState("")
     const [navtextR, setNavtextR] = useState("")
     const [navHeaderTitle, setNavHeaderTitle] = useState('')
@@ -15,7 +15,7 @@ function Navigation() {
     const {isAuth, logout} = useContext(AuthContext);
     const {headerTitle, setHeaderStaticPage} = useContext(HeaderTitleContext)
 
-    function makeNavButton(navigateTo, navHeaderTitle, naviText, buttonText, clName = '', navTextLeft = true) {
+    function makeNavButton(navigateTo, navHeaderTitle, naviText, buttonSymbol, clName = '', navTextLeft = true) {
 
         return (
             <button type="button"
@@ -41,7 +41,7 @@ function Navigation() {
                         }
                     }
                     }>
-                <span className="material-icons">{buttonText}</span>
+                <span className="material-icons">{buttonSymbol}</span>
             </button>
         )
     }
@@ -81,8 +81,8 @@ function Navigation() {
                                     <button className="button-red" type="button" onClick={logout}>
                                         <span className="material-icons">logout</span>
                                     </button>
-                                    {makeNavButton('/Manual', "Handleiding", "handleiding", "info")}
-                                    {makeNavButton('/LoginPage', "Login", "inloggen", "login", "")}
+                                    {makeNavButton('/ManualPage', "Handleiding", "handleiding", "info")}
+                                    {makeNavButton('/ProjectsPage', "Overzicht Projecten", "Overzicht Projecten", "info")}
                                     <h3 className="navtext-center">
                                         {navtext}
                                     </h3>
@@ -100,7 +100,6 @@ function Navigation() {
                                 </div>
                             </div>
                         </div>
-
                     }
                 </div>
             </nav>
@@ -108,4 +107,3 @@ function Navigation() {
     );
 }
 
-export default Navigation;
