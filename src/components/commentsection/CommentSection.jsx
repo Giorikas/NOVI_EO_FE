@@ -1,6 +1,6 @@
 import './CommentSection.css';
 
-function CommentSection(){
+export default function CommentSection(){
     return(<>
 
         <section className="greeting">
@@ -11,4 +11,3 @@ function CommentSection(){
 
     </>)
 }
- export default CommentSection;

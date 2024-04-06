@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
+import NewProjectPage from "./pages/ProjectsPage/NewProjectPage/NewProjectPage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import ManualPage from "./pages/ManualPage/ManualPage.jsx";
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/RegistrationPage" element={<RegistrationPage />}/>
                 <Route path="/ContactPage" element={<ContactPage />}/>
                 <Route path="/ProjectsPage" element={isAuth ? <ProjectsPage /> : <Navigate to="/" />}/>
+                <Route path="/ProjectsPage/NewProjectPage" element={isAuth ? <NewProjectPage /> : <Navigate to="/" />}/>
                 <Route path="/ManualPage" element={isAuth ? <ManualPage /> : <Navigate to="/" />}/>
             </Routes>
         </main>

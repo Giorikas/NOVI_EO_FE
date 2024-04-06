@@ -11,11 +11,11 @@ export default function RegistrationPage()
     // let op: de namen van de keys moeten overeenkomen met de name-attributen van de velden
     const [formState, setFormState] = useState({
         firstname: '',
-        /*lastname: '',
+        lastname: '',
         email: '',
         password: '',
         password2: '',
-        roleChoise: '',*/
+        roleChoice: ''
 
     });
 
@@ -64,39 +64,11 @@ export default function RegistrationPage()
     function handleRadioChange(e) {
         const newVal = e.target.value;
         console.log(newVal)
-        formState.roleChoise = newVal;
+        formState.roleChoice = newVal;
         console.log(`The value of input ${e.target.name} has just been set to ${e.target.value}`);
     }
 
     return (
-        <>
-
-        <form onSubmit={handleSubmit}>
-
-        <fieldset>
-            <legend>Naam</legend>
-            <label htmlFor="details-firstname">
-                voornaam:
-                <input
-                    type="text"
-                    name="firstname"
-                    id="details-firstname"
-                    value={formState.firstname}
-                    onChange={handleFormChange}
-                    required
-                />
-            </label>
-        </fieldset>
-        <button type="submit">
-            <span className="material-icons">&#xE163;</span>
-        </button>
-
-        </form>
-
-        </>
-    );
-
-    /*return (
         <>
             <form onSubmit={handleSubmit}>
 
@@ -104,17 +76,17 @@ export default function RegistrationPage()
                     <legend>Rol</legend>
                     <label htmlFor="roleProjectLeader">
                         <input type="radio"
-                               name="roleChoise"
+                               name="roleChoice"
                                value="ProjectLeader"
-                               //checked={formState.roleChoise === "ProjectLeader"}
+                               //checked={formState.roleChoice === "ProjectLeader"}
                                id="roleProjectLeader"
                                onChange={handleFormChange}
                         /> Projectleider</label>
                     <label htmlFor="roleTrafficEngineer">
                         <input type="radio"
-                               name="roleChoise"
+                               name="roleChoice"
                                value="TrafficEngineer"
-                               //checked={formState.roleChoise === "TrafficEngineer"}
+                               //checked={formState.roleChoice === "TrafficEngineer"}
                                id="roleTrafficEngineer"
                                onChange={handleRadioChange}
                                defaultChecked
@@ -123,7 +95,7 @@ export default function RegistrationPage()
 
                     <label htmlFor="roleCivilEngineer">
                         <input type="radio"
-                               name="roleChoise"
+                               name="roleChoice"
                                value="CivilEngineer"
                                //checked={formState.roleChoise === "CivilEngineer"}
                                id="roleCivilEngineer"
@@ -198,6 +170,6 @@ export default function RegistrationPage()
                 </button>
             </form>
         </>
-    );*/
+    );
 }
 

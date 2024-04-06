@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header({title}){
+export default function Header({title}){
 
 
 
@@ -12,4 +12,3 @@ function Header({title}){
 
     </>);
 }
-export default Header

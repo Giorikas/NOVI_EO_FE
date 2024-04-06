@@ -1,19 +1,19 @@
 [
   {
     "id": 1,
-    "name": "ABC-straat - Utrecht",
+    "name": "Duke Ellingtonstraat - Utrecht",
     "status": "Started"
 
   },
   {
     "id": 2,
-    "name": "ABC-Strapatsestraat - Den Haag",
-    "status": ""
+    "name": "A12 - Den Haag",
+    "status": "TrafficEngineering"
   },
   {
     "id": 3,
-    "name": "QWERTY",
-    "amount": 78
+    "name": "Spoorlaan - Tilburg",
+    "status": "TrafficEveluation"
   }
 ]
 

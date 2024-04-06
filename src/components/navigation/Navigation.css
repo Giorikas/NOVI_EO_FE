@@ -46,6 +46,7 @@
 
 button {
     margin: 0 10px;
+    font-size: 1.5rem;
 }
 
 
@@ -78,4 +79,8 @@ button {
     text-align: center;
     padding: 0;
     margin: 0;
+}
+
+.information-button{
+    cursor: help;
 }

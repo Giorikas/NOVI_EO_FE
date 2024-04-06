@@ -81,8 +81,8 @@ export default function Navigation() {
                                     <button className="button-red" type="button" onClick={logout}>
                                         <span className="material-icons">logout</span>
                                     </button>
-                                    {makeNavButton('/ManualPage', "Handleiding", "handleiding", "info")}
-                                    {makeNavButton('/ProjectsPage', "Overzicht Projecten", "Overzicht Projecten", "info")}
+                                    {makeNavButton('/ProjectsPage', "Overzicht Projecten", "overzicht projecten", "build")}
+                                    {makeNavButton('/ManualPage', "Handleiding", "handleiding", "info", "information-button")}
                                     <h3 className="navtext-center">
                                         {navtext}
                                     </h3>
@@ -93,7 +93,7 @@ export default function Navigation() {
                             </div>
                             <div className="right-part">
                                 <div className="right-in-container">
-                                    {makeNavButton('/ContactPage', "Contact", "contact", "chat mail phone", "pill-button")}
+                                    {makeNavButton('/ContactPage', "Contact", "contact", "chat mail phone", "pill-button", false)}
                                     <h3 className="navtext-center">
                                         {navtextR}
                                     </h3>
