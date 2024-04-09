@@ -3,7 +3,6 @@
     "id": 1,
     "name": "Duke Ellingtonstraat - Utrecht",
     "status": "Started"
-
   },
   {
     "id": 2,
@@ -13,7 +12,27 @@
   {
     "id": 3,
     "name": "Spoorlaan - Tilburg",
-    "status": "TrafficEveluation"
+    "status": "TrafficEvaluation"
+  },
+  {
+    "id": 4,
+    "name": "Sportlaan - Aalsmeer",
+    "status": "CivilEngineering"
+  },
+  {
+    "id": 5,
+    "name": "Meander - Amstelveen",
+    "status": "CivilEvaluation"
+  },
+  {
+    "id": 6,
+    "name": "Neude - Utrecht",
+    "status": "Finished"
+  },
+  {
+    "id": 7,
+    "name": "Neu - Utcht",
+    "status": "ished"
   }
 ]
 

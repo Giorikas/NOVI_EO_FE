@@ -43,7 +43,7 @@ export default function RegistrationPage()
             //const result = axios.get('http://localhost:8080/register');
 
             const result = axios.post('http://localhost:8080/register', {"Test": "Malakas"});
-            //console.log(result);
+            console.log(result);
         }
 
     // handleFormChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
@@ -77,7 +77,7 @@ export default function RegistrationPage()
                     <label htmlFor="roleProjectLeader">
                         <input type="radio"
                                name="roleChoice"
-                               value="ProjectLeader"
+                               value="PROJECT_LEADER"
                                //checked={formState.roleChoice === "ProjectLeader"}
                                id="roleProjectLeader"
                                onChange={handleFormChange}
@@ -85,7 +85,7 @@ export default function RegistrationPage()
                     <label htmlFor="roleTrafficEngineer">
                         <input type="radio"
                                name="roleChoice"
-                               value="TrafficEngineer"
+                               value="TRAFFIC_ENGINEER"
                                //checked={formState.roleChoice === "TrafficEngineer"}
                                id="roleTrafficEngineer"
                                onChange={handleRadioChange}
@@ -96,7 +96,7 @@ export default function RegistrationPage()
                     <label htmlFor="roleCivilEngineer">
                         <input type="radio"
                                name="roleChoice"
-                               value="CivilEngineer"
+                               value="CIVIL_ENGINEER"
                                //checked={formState.roleChoise === "CivilEngineer"}
                                id="roleCivilEngineer"
                                onChange={handleRadioChange}

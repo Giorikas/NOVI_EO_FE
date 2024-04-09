@@ -11,7 +11,6 @@ export default function ProjectsPage(){
 
     const [headerText, setHeaderText] = useState("Projecten");
     const {setHeaderStaticPage} = useContext(HeaderTitleContext);
-    const [projectNavText, setProjectNavText] = useState('Hallo');
     const [shownStatus, setShownStatus] = useState('status');
     const [cssStatusClassName, setCssStatusClassName] = useState('')
     const navigate = useNavigate();
@@ -33,45 +32,30 @@ export default function ProjectsPage(){
 
     },[])
 
-
-
-
     function newProject(){
         console.log(projectBarProjects[1].status)
         navigate('/ProjectsPage/NewProjectPage')
     }
 
-    function statusToClassname (str){
-        switch (str) {
-            case    "Started":
-                setCssStatusClassName('st-')
-                break
-        }
-    }
+
 
     return(
          <>
-             <div className="subnav">
-                 <h2>{projectNavText}</h2>
-                 <CustomButton type="button" disabled={false} onClick={newProject}>
+             <fieldset>
+                 <legend>
+                 <CustomButton classname="new-project" type="button" disabled={false} onClick={newProject}>
                      <span className="material-icons">add_road</span>
                  </CustomButton>
-                    <h3>{shownStatus}</h3>
-             </div>
+                 </legend>
+             </fieldset>
+
+                 {projectBarProjects.map((projectBarProjects, index) =>
+                     <ProjectBar key={index} data={projectBarProjects}/>
+                 )}
 
 
-                {/*{projectBarProjects.length >0 && projectBarProjects.map((projectBar, index) => {*/}
-                {/*    return (*/}
-                {/*                <ProjectBar*/}
-                {/*                    key={index}*/}
-                {/*                    data={projectBar}*/}
-                {/*                />*/}
-                {/*    );*/}
-                {/*})}*/}
 
-             {projectBarProjects.map((projectBarProjects, index) =>
-             <ProjectBar key={index} data={projectBarProjects}/>)
-             }
+
 
          </>
     );
