@@ -4,8 +4,10 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 import CustomButton from "../../components/custombutton/CustomButton.jsx";
 import ProjectBar from "../../components/projectcomponents/ProjectBar.jsx";
-import projectBarProjects from "../../helpers/Projectenlijst.json";
+//import projectBarProjects from "../../helpers/Projectenlijst.json";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import projectBarProjects from "../../helpers/Projectenlijst.json";
 
 export default function ProjectsPage(){
 
@@ -14,26 +16,27 @@ export default function ProjectsPage(){
     const [shownStatus, setShownStatus] = useState('status');
     const [cssStatusClassName, setCssStatusClassName] = useState('')
     const navigate = useNavigate();
+    const [projectBarProjects, setProjectBarProjects] = useState([]);
 
     useEffect(()=> {
         setHeaderStaticPage(headerText);
 
-        // async function fetchProjects(){
-        //     try {
-        //         const r = await axios.get('SERVER..../projects/...')
-        //         setProjectForBar(r.data);
-        //     } catch (e) {
-        //         console.error(e);
-        //     }
-        // }
-        // fetchProjects()
+        async function fetchProjects(){
+            try {
+                const r = await axios.get('http://localhost:8080/projects');
+                setProjectBarProjects(r.data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchProjects().then(/* rebind pagina */)
 
         // CHECK if array is not empty!
 
     },[])
 
     function newProject(){
-        console.log(projectBarProjects[1].status)
         navigate('/ProjectsPage/NewProjectPage')
     }
 

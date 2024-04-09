@@ -1,33 +1,34 @@
 import capToDashLowerCase from "./capToDashLowerCase.js";
 export default function statusToClassName (strStatusName) {
 
-    strStatusName = capToDashLowerCase(strStatusName)
-    console.log("capToDash..." + strStatusName)
+    // strStatusName = capToDashLowerCase(strStatusName) ENUMS ARE CAPS !!!
     let cssStatusClassName = '';
 
     switch (strStatusName) {
-        case    "started":
+        case    "STARTED":
             cssStatusClassName=('status ' + strStatusName);
             break;
-        case    "traffic-engineering":
+        case    "TRAFFIC_ENGINEERING":
             cssStatusClassName=('status ' + strStatusName);
             break;
-        case    "traffic-evaluation":
+        case    "TRAFFIC_EVALUATION":
             cssStatusClassName=('status ' + strStatusName);
             break;
-        case    "civil-engineering":
+        case    "CIVIL_ENGINEERING":
             cssStatusClassName=('status ' + strStatusName);
             break;
-        case    "civil-evaluation":
+        case    "CIVIL_EVALUATION":
             cssStatusClassName=('status ' + strStatusName);
             break;
-        case    "finished":
+        case    "FINISHED":
             cssStatusClassName=('status ' + strStatusName);
             break;
         default:
             cssStatusClassName="";
             console.log("No valid status given! status: " + strStatusName)
+            return cssStatusClassName;
     }
 
-    return cssStatusClassName;
+    return cssStatusClassName.replace(/_/g,"-").toLowerCase();
+
 }

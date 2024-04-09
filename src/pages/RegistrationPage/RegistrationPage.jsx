@@ -15,24 +15,10 @@ export default function RegistrationPage()
         email: '',
         password: '',
         password2: '',
-        roleChoice: ''
+        role: 'TRAFFIC_ENGINEER'
 
     });
 
-        function postRegistration(formstate){
-            try {
-                const response = axios.post('http://localhost:8080/register', "stuff",
-                    {
-                        headers:
-                            {
-                                'Content-Type': 'application/json'
-                            }
-                    })
-            }
-            catch (e) {
-                console.log(e)
-            }
-        }
 
         function handleSubmit(e) {
             // chkSamePasswords({formState.password},{formState.password2});
@@ -42,7 +28,7 @@ export default function RegistrationPage()
             // This one works
             //const result = axios.get('http://localhost:8080/register');
 
-            const result = axios.post('http://localhost:8080/register', {"Test": "Malakas"});
+            const result = axios.post('http://localhost:8080/register', formState);
             console.log(result);
         }
 
@@ -64,7 +50,7 @@ export default function RegistrationPage()
     function handleRadioChange(e) {
         const newVal = e.target.value;
         console.log(newVal)
-        formState.roleChoice = newVal;
+        formState.role = newVal;
         console.log(`The value of input ${e.target.name} has just been set to ${e.target.value}`);
     }
 
@@ -76,17 +62,17 @@ export default function RegistrationPage()
                     <legend>Rol</legend>
                     <label htmlFor="roleProjectLeader">
                         <input type="radio"
-                               name="roleChoice"
+                               name="role"
                                value="PROJECT_LEADER"
-                               //checked={formState.roleChoice === "ProjectLeader"}
+                               //checked={formState.role === "ProjectLeader"}
                                id="roleProjectLeader"
                                onChange={handleFormChange}
                         /> Projectleider</label>
                     <label htmlFor="roleTrafficEngineer">
                         <input type="radio"
-                               name="roleChoice"
+                               name="role"
                                value="TRAFFIC_ENGINEER"
-                               //checked={formState.roleChoice === "TrafficEngineer"}
+                               //checked={formState.role === "TrafficEngineer"}
                                id="roleTrafficEngineer"
                                onChange={handleRadioChange}
                                defaultChecked
@@ -95,9 +81,9 @@ export default function RegistrationPage()
 
                     <label htmlFor="roleCivilEngineer">
                         <input type="radio"
-                               name="roleChoice"
+                               name="role"
                                value="CIVIL_ENGINEER"
-                               //checked={formState.roleChoise === "CivilEngineer"}
+                               //checked={formState.role === "CivilEngineer"}
                                id="roleCivilEngineer"
                                onChange={handleRadioChange}
                         /> Civieltechnisch Ontwerper

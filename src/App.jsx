@@ -16,12 +16,10 @@ import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import NewProjectPage from "./pages/ProjectsPage/NewProjectPage/NewProjectPage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import ManualPage from "./pages/ManualPage/ManualPage.jsx";
+import ProjectPage from "./pages/ProjectsPage/ProjectPage/ProjectPage.jsx";
 
 import {AuthContext} from "./context/AuthContext.jsx";
 import {HeaderTitleContext} from "./context/HeaderTitleContext.jsx";
-
-
-
 
 function App() {
 
@@ -38,6 +36,7 @@ function App() {
                 <Route path="/RegistrationPage" element={<RegistrationPage />}/>
                 <Route path="/ContactPage" element={<ContactPage />}/>
                 <Route path="/ProjectsPage" element={isAuth ? <ProjectsPage /> : <Navigate to="/" />}/>
+                <Route path="/ProjectsPage/:id" element={isAuth ? <ProjectPage/> : <Navigate to="/" />}/>
                 <Route path="/ProjectsPage/NewProjectPage" element={isAuth ? <NewProjectPage /> : <Navigate to="/" />}/>
                 <Route path="/ManualPage" element={isAuth ? <ManualPage /> : <Navigate to="/" />}/>
             </Routes>
