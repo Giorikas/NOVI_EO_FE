@@ -5,15 +5,22 @@
   --color-bg: #ffffe0;  /* achtergrondkleur */
   --color-primary: #000080; /* primaire kleur */
   --color-secondary: #fefefe; /* secundaire kleur */
-  --color-projectleader-active: #800080;
-  --color-projectleader-passive: #FFCCFF;
-  --color-projectleader-txt: #000000;
-  --color-trafdesigner-active: #FFA500;
-  --color-trafdesigner-passive: #FFECBC;
-  --color-trafdesigner-txt: #FFFFFF;
-  --color-civildesigner-active: #808080;
-  --color-civildesigner-passive: #CCCCCC;
-  --color-civildesigner-txt: #000000;
+
+  --color-projectleader-active-bg: #800080;
+  --color-projectleader-active-fg: #FFFFFF;
+  --color-projectleader-passive-bg: #da3cda;
+  --color-projectleader-passive-fg: #000000;
+
+  --color-trafficengineer-active-bg: #FFA500;
+  --color-trafficengineer-active-fg: #FFFFFF;
+  --color-trafficengineer-passive-bg: #FFECBC;
+  --color-trafficengineer-passive-fg: #000000;
+
+  --color-civilengineer-active-bg: #404040;
+  --color-civilengineer-active-fg: #FFFFFF;
+  --color-civilengineer-passive-bg: #A0A0A0;
+  --color-civilengineer-passive-fg: #000000;
+
   --color-na: #E0E0E0;
   --color-evaluation: #800080;
   --color-ok: #009000; /* ok (om te klikken) */
@@ -102,12 +109,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-button:disabled{
-  background-color: var(--color-disabled-bg);
-  border-color: var(--color-disabled-border);
-  color: var(--color-disabled-txt);
-}
-
 .pill-button{
 
   min-height: 60px;
@@ -126,6 +127,17 @@ button[type=submit]:hover{
   color: var(--color-ok);
   background-color: var(--color-secondary);
   border-color: var(--color-ok);
+}
+
+.delete-button:hover{
+  background-color: #E00000;
+  color: white;
+}
+
+button:disabled{
+  background-color: var(--color-disabled-bg);
+  border-color: var(--color-disabled-border);
+  color: var(--color-disabled-txt);
 }
 
 .material-icons{

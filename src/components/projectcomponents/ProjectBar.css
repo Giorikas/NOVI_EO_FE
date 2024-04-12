@@ -1,0 +1,95 @@
+.status  {
+    margin: 5px 0px;
+    padding:  10px 0 10px 10px ;
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.status .material-icons {
+    font-size: 2rem;
+}
+
+
+.status button  {
+    padding: 1px;
+    height: 60px;
+    width: 60px;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+
+
+.started, .traffic-evaluation, .civil-evaluation{
+    background-color: var(--color-projectleader-passive-bg);
+    color: var(--color-projectleader-passive-fg);
+}
+
+.started button, .traffic-evaluation button, .civil-evaluation button{
+    background-color: var(--color-projectleader-active-bg);
+    color: var(--color-projectleader-active-fg);
+}
+
+.started button:hover,
+.traffic-evaluation button:hover,
+.civil-evaluation button:hover{
+    color: var(--color-projectleader-active-bg);
+    background-color: var(--color-projectleader-active-fg);
+}
+
+
+
+.traffic-engineering{
+    background-color: var(--color-trafficengineer-passive-bg);
+    color: var(--color-projectleader-passive-fg);
+}
+
+.traffic-engineering button{
+    background-color: var(--color-trafficengineer-active-bg);
+    color: var(--color-trafficengineer-active-fg);
+}
+.traffic-engineering button:hover{
+    color: var(--color-trafficengineer-active-bg);
+    background-color: var(--color-trafficengineer-active-fg);
+}
+
+.civil-engineering{
+    background-color: var(--color-civilengineer-passive-bg);
+    color: var(--color-civilengineer-passive-fg);
+}
+
+.civil-engineering button{
+    background-color: var(--color-civilengineer-active-bg);
+    color: var(--color-civilengineer-active-fg);
+}
+
+.civil-engineering button:hover{
+    color: var(--color-civilengineer-active-bg);
+    background-color: var(--color-civilengineer-active-fg);
+}
+
+.finished{
+    background-color: #c0f0c0;
+}
+.finished button{
+    background-color: #009000;
+}
+
+.status .delete-button:hover{
+    border: solid 3px white;
+    background-color: #E00000;
+    color: white;
+}
+
+
+.left-incontainer-status {
+    padding: 0;
+    width: 50%;
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
