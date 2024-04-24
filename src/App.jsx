@@ -36,7 +36,7 @@ function App() {
                 <Route path="/RegistrationPage" element={<RegistrationPage />}/>
                 <Route path="/ContactPage" element={<ContactPage />}/>
                 <Route path="/ProjectsPage" element={isAuth ? <ProjectsPage /> : <Navigate to="/" />}/>
-                <Route path="/ProjectsPage/:id" element={isAuth ? <ProjectPage/> : <Navigate to="/" />}/>
+                <Route path="/ProjectsPage/:id" element={isAuth ? <ProjectPage /> : <Navigate to="/" />}/>
                 <Route path="/ProjectsPage/NewProjectPage" element={isAuth ? <NewProjectPage /> : <Navigate to="/" />}/>
                 <Route path="/ManualPage" element={isAuth ? <ManualPage /> : <Navigate to="/" />}/>
             </Routes>
