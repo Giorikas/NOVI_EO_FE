@@ -13,9 +13,6 @@ export default function ProjectBar(props){
     const [projectIsFinished, setProjectIsFinished] = useState("false");
 
     const navigate = useNavigate();
-    // console.log(props.data.id);
-    // console.log(props.data.status);
-    // console.log(props.data.name);
 
 
     useEffect( ()=> {

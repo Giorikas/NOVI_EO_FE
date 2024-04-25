@@ -4,10 +4,8 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 import {HeaderTitleContext} from "../../context/HeaderTitleContext.jsx";
 import CustomButton from "../../components/custombutton/CustomButton.jsx";
 import ProjectBar from "../../components/projectcomponents/ProjectBar.jsx";
-//import projectBarProjects from "../../helpers/Projectenlijst.json";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import projectBarProjects from "../../helpers/Projectenlijst.json";
 
 export default function ProjectsPage(){
 

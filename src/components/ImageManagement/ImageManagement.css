@@ -1,0 +1,27 @@
+.image-management{
+    min-height: 400px;
+    max-width: 1200px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.image-management-left{
+    padding: 0;
+    height: 100%;
+    width: 1000px;
+    border: var(--color-primary) 4px solid;
+}
+
+.image-management-right{
+    width: 120px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}

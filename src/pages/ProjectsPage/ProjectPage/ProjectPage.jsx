@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState, useContext} from "react";
-// import projectBarProjects from "../../../helpers/Projectenlijst.json";
+import ImageManagement from "../../../components/ImageManagement/ImageManagement.jsx";
 
 export default function ProjectPage() {
 
@@ -11,7 +11,6 @@ export default function ProjectPage() {
 //    let project = projectBarProjects[id];
 
     useEffect(()=> {
-        // setHeaderStaticPage(headerText);
 
         async function fetchProject() {
             try {
@@ -27,8 +26,16 @@ export default function ProjectPage() {
 
     return (
         <>
-            <h1>{projectData.name}</h1>
-            <h2>{id}</h2>
+            <h2>{projectData.name}</h2>
+            <fieldset>
+                <legend>Opbouw Dwarsprofiel</legend>
+                <div className="flex-row-center">
+                    <ImageManagement/>
+                </div>
+
+
+
+            </fieldset>
             {/*<div>Het productnummer is {project.id}</div>*/}
         </>
     )
