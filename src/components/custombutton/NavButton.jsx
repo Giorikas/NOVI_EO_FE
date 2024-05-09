@@ -3,7 +3,6 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useState} from "react";
 import navTextChange from "../../helpers/navTextChange.js";
 
-
 function NavButton({
                        type,
                        children,
@@ -28,7 +27,6 @@ function NavButton({
                     setHeaderTitle(`${onClickHeaderTitle}`);
                 }}
             className={variant === 'primary' ? 'button button-primary' : 'button button-invisible'}
-
 
             /*
                         onMouseEnter={() => {setNavtext(`${onMouseEnterNavTextChange}`)}}

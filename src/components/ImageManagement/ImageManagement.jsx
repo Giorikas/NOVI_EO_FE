@@ -4,7 +4,7 @@ import CustomButton from "../custombutton/CustomButton.jsx";
 
 
 export default function ImageManagement(){
-
+//CHILD
 
         return(
             <>

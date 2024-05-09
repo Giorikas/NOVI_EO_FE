@@ -1,0 +1,11 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container select {
+    width: 250px;
+}
+

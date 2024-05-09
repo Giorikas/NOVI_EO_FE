@@ -35,7 +35,7 @@ export default function RegistrationPage()
 
         const changedFieldName = e.target.name;
         const newValue = e.target.type === ("checkbox") ? e.target.checked : e.target.value;
-
+        // In toekomst meerdere rolen per projectlid mogelijk; dus checkbox ipv radiobutton.
         setFormState({
             ...formState,
             [changedFieldName]: newValue,

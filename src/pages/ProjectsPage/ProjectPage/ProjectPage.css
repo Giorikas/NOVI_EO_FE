@@ -1,0 +1,20 @@
+#cross-section-borders{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#cross-section-parameters{
+    display: flex;
+    background-color: #E00000;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: start;
+}
+
+.function-titles{
+    flex-direction: row;
+}
+
+
