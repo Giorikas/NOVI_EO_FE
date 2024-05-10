@@ -1,0 +1,10 @@
+
+.numeric-input input{
+    font-size: 1.2em;
+    color: var(--color-secondary);
+    border: var(--color-primary) solid 1px;
+    border-radius: 15px;
+    background-color: var(--color-primary);
+    width: 100px;
+    text-align: center;
+}
