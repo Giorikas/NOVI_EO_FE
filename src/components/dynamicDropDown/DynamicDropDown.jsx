@@ -7,6 +7,8 @@ export default function DynamicDropDown(props) {
 
     const [selectedItem, setSelectedItem] = useState("")
     const objOptions = props.options;
+    const valueDropDown = props.optionsValue;
+    const keyDropDown = (props.optionsKey ? props.optionsKey : props.optionsValue);
 
     function handleBorderTypeSelect(e) {
         console.log("Component selected: ", e.target.value);
@@ -25,7 +27,7 @@ export default function DynamicDropDown(props) {
             value={selectedItem}>
 
                 <option disabled={true} value="">{props.placeholder}</option>
-                {objOptions.map((options) => <option value={options.type}>{options.type}</option>)}
+                {objOptions.map((options) => <option key={options[keyDropDown]} value={options[valueDropDown]}>{options[valueDropDown]}</option>)}
             </select>
         </div>
     )

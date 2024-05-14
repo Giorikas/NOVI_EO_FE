@@ -1,13 +1,13 @@
 .image-management{
     min-height: 400px;
+    width: 100%;
     max-width: 1200px;
-    width: auto;
+
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
     border: var(--color-primary) dashed 3px;
-
 }
 
 .image-management-left{

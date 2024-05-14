@@ -1,0 +1,37 @@
+.csp-params-input-container{
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: start;
+    overflow-x: auto;
+    overflow-y: inherit;
+    border: orange 3px dashed;
+}
+
+.csp-params-inputs{
+
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border: orangered 2px solid;
+
+}
+
+input{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.csp-params-input-container button  {
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+}
