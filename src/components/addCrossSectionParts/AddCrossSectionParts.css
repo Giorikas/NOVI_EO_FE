@@ -1,37 +1,58 @@
 .csp-params-input-container{
-    height: 300px;
+    height: 100%;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: row;
     align-content: center;
-    justify-content: start;
+    justify-content: center;
     overflow-x: auto;
     overflow-y: inherit;
     border: orange 3px dashed;
 }
 
 .csp-params-inputs{
-
     height: 100%;
-    padding: 10px;
-    margin: 10px;
+    padding: 0px 10px;
+    margin: 0px;
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border: orangered 2px solid;
-
 }
 
-input{
+.csp-params-input-container input{
+    height: 20px;
+    width: 80%;
+    min-width: 125px;
     padding: 0;
     margin: 0;
-    width: 100%;
 }
 
-.csp-params-input-container button  {
-    border-radius: 0;
-    width: 30px;
+.csp-params-input-container section{
+    display: flex;
+    flex-direction: row;
+}
+
+.csp-params-input-container p  {
+    font-size: 25pt;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0;
+    width: 30%;
     height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.csp-params-input-container p:hover{
+    cursor: pointer;
+}
+
+.csp-params-input-container span {
+    font-size: inherit;
 }

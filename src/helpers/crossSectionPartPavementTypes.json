@@ -1,5 +1,11 @@
-[
-  {"type":  "Asfalt"},
-  {"type":  "Beton"},
-  {"type":  "Elementen"}
+ [
+  {
+    "type": "Asfalt"
+  },
+  {
+    "type": "Beton"
+  },
+  {
+    "type": "Elementen"
+  }
 ]

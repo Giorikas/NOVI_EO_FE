@@ -11,20 +11,17 @@ import CustomButton from "../../../components/custombutton/CustomButton.jsx";
 import AddCrossSectionParts from "../../../components/addCrossSectionParts/AddCrossSectionParts.jsx";
 import {crossSectionBorderTypes} from '../../../helpers/crossSectionBorderTypes';
 
-import crossSectionPartPavementTypes from "../../../helpers/crossSectionPartPavementTypes.json"
-import crossSectionPartFunction from "../../../helpers/crossSectionPartFunction.json"
 export default function ProjectPage() {
 
     const baseURL = 'http://localhost:8080/projects';
     const { id } = useParams();
     const [projectData, setProjectData] = useState({});
 
-
     // Project (CrossSections Params: cs=crossSection; csp = crossSectionPart)
     const [csParamLeftBorder, setCsParamLeftBorder] = useState('');
     const [csParamRightBorder, setCsParamRightBorder] = useState('');
     const [csParamWidth, setCsParamWidth] = useState(0.0);
-    const [cspParameters, setcspParameters] = useState([{
+    const [cspParameters, setCspParameters] = useState([{
         cspName: "",
         type: "",
         pavementWidth: 0.0,
@@ -33,30 +30,27 @@ export default function ProjectPage() {
         intensities: 0
     }]);
 
-
     //Array Fillers for Dynamic Dropdowns:
     const borderTypes = crossSectionBorderTypes(); // Array of Objects of crossectionParts
-    const functionTypes = crossSectionPartFunction; // Array of Objects of functionTypes with default values.
-    const pavementTypes = crossSectionPartPavementTypes; //Array of Objects of PavementTypes
-
 
 // Switch to test site with roles:
     const [isRoleTraffic, setIsRoleTraffic] = useState(true);
 
-//    let project = projectBarProjects[id];
+// let project = projectBarProjects[id];
 
     useEffect(()=> {
 
         async function fetchProject() {
             try {
                 const r = await axios.get(`${baseURL}/${id}`);
-                setProjectData(r.data)
-
+                setProjectData(r.data);
             } catch (e) {
                 console.error(e);
             }
         }
     fetchProject().then(/* rebind pagina */);
+    // passing r.data to object.
+    // setCspParameters(r.data);
 
     },[DynamicDropDown, NumericInput])
 
@@ -68,15 +62,13 @@ export default function ProjectPage() {
         console.log("Projectpage R: "+ csParamRightBorder)
         const csWidth = (crossSectionBordersData) => {setCsParamWidth(crossSectionBordersData);}
         console.log("Projectpage W: "+ csParamWidth)
-    console.log(pavementTypes)
-    console.log(functionTypes)
+
+        const crossSectionToProject = (crossSectionToProjectData) => {setCspParameters(crossSectionToProjectData);}
+        console.log(cspParameters);
 
         // CS Params:
         //const cspParams = (index, isDelete, crossSectionPartData) => {handleCrossSectionParts(index, isDelete,
-    // crossSectionPartData)}
-
-
-
+        // crossSectionPartData)}
 
     function handleBtnClick(){
         setIsRoleTraffic(!isRoleTraffic);
@@ -84,7 +76,6 @@ export default function ProjectPage() {
     }
 
     // function handleCrossSectionParts(index, isDelete, crossSectionPartData){}
-
 
     return (
         <>
@@ -105,41 +96,37 @@ export default function ProjectPage() {
                         childToParent = {rightBorder}
                     />
                     <NumericInput
-                        id = "crossSectionWidth" step=".05" startValue="12.00" childToParent = {csWidth}
+                        id = "crossSectionWidth" step=".05" startValue="17.50" childToParent = {csWidth}
                         labelTxt = "is de afstand:" suffix = "meter"
                     />
                 </div>
                 <section id="cross-section-parameters">
                     <div className="cross-section-parameters-left">
 
-                        <div className="function-titles">
-                            <h3>Functie</h3>
-                            <h4>Breedte</h4>
-                            <h4>Type deklaag</h4>
-                            <h4>Ontwerpsnelheid</h4>
-                            <h4>Intensiteit</h4>
-                        </div>
-                        <div className="cross-section-parts-table">
-                            <AddCrossSectionParts/>
-                        </div>
+                        <div className="function-titles align-seven-vertical-elements">
 
+                            <p>Naam</p>
+                            <p>Functie</p>
+                            <p>Breedte</p>
+                            <p>Deklaag</p>
+                            <p>Snelheid <i className="mathematics-font">v<sub>0</sub></i></p>
+                            <p>Intensiteit <i className="mathematics-font">I</i></p>
+                            <p></p>
+
+                        </div>
+                        <div className="csp-left-filler"></div>
+                        <div className="cross-section-parts-table">
+                            <AddCrossSectionParts
+                                childToParent ={crossSectionToProject}/>
+                        </div>
 
                     </div>
-
                     <div className="cross-section-parameters-right">
-
                         <div className="buttons-area">
-                            <CustomButton type="button" disabled={false} onClick={handleBtnClick}>
-                                <span className="material-icons">add</span>
+                            <CustomButton type="button" disabled={false} >
+                                <span className="material-icons">thumb_up</span>
                             </CustomButton>
 
-                            <CustomButton type="button" disabled={false} >
-                                <span className="material-icons">remove</span>
-                            </CustomButton>
-
-                            <CustomButton type="button" disabled={false} >
-                                <span className="material-icons">loop</span>
-                            </CustomButton>
                         </div>
                     </div>
                 </section>

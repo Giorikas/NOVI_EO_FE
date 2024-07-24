@@ -2,7 +2,6 @@ import "./DynamicDropDown.css";
 import {useState} from "react";
 
 
-// export default function dynamicDropDown({leftBorder, rightBorder, csWidth}) {
 export default function DynamicDropDown(props) {
 
     const [selectedItem, setSelectedItem] = useState("")
@@ -10,7 +9,7 @@ export default function DynamicDropDown(props) {
     const valueDropDown = props.optionsValue;
     const keyDropDown = (props.optionsKey ? props.optionsKey : props.optionsValue);
 
-    function handleBorderTypeSelect(e) {
+    function handleSelected(e) {
         console.log("Component selected: ", e.target.value);
         const newVal = e.target.value
         setSelectedItem(newVal);
@@ -23,7 +22,7 @@ export default function DynamicDropDown(props) {
             <select
             id={props.id}
             name={props.name}
-            onChange={e => handleBorderTypeSelect(e)}
+            onChange={e => handleSelected(e)}
             value={selectedItem}>
 
                 <option disabled={true} value="">{props.placeholder}</option>

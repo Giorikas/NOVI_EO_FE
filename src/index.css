@@ -80,7 +80,17 @@ p {
 }
 
 
-/* ===== FIELDSETS ======================================== */
+sub {
+  font-size: 0.65em;
+}
+
+.mathematics-font{
+  font-family: "Times New Roman", Times, sans-serif;
+  /*font-family: "Times New Roman", Times, sans-serif;*/
+}
+
+
+
 
 /* ===== BUTTONS ========================================== */
 
