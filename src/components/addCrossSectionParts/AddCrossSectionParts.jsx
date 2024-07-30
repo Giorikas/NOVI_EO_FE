@@ -3,13 +3,14 @@ import './AddCrossSectionParts.css'
 import { useState } from "react";
 import crossSectionPartPavementTypes from "../../helpers/crossSectionPartPavementTypes.json"
 import crossSectionPartFunction from "../../helpers/crossSectionPartFunction.json"
-import DynamicDropDown from "../dynamicDropDown/DynamicDropDown.jsx";
 
 
-export default function AddCrossSectionParts(childToParent) {
+
+export default function AddCrossSectionParts({childToParent}) {
 
     const functionTypes = crossSectionPartFunction; // Array of Objects of functionTypes with defaultValues.
-    const pavementTypes = crossSectionPartPavementTypes; //Array of Objects of PavementTypes
+    const pavementTypes = crossSectionPartPavementTypes; //Array of Objects of PavementTypes --> vooralsnog hardcoded!
+    // console.log("FUNCTIONTYPES -- ")
     // console.log(functionTypes)
     // console.log(pavementTypes)
 
@@ -29,14 +30,14 @@ export default function AddCrossSectionParts(childToParent) {
         let onChangeValue = [...inputs];
         onChangeValue[index][name] = value;
         setInputs(onChangeValue);
-        inputToJson();
+        updateToParent();
     };
 
     const handleDeleteInput = (index) => {
         const newArray = [...inputs];
         newArray.splice(index, 1);
         setInputs(newArray);
-        inputToJson();
+        updateToParent();
     };
 
     function handleSelect(event, index) {
@@ -44,28 +45,41 @@ export default function AddCrossSectionParts(childToParent) {
         let { name, value } = event.target;
         let onChangeValue = [...inputs];
         onChangeValue[index][name] = value;
+
+        if (name == "type") {
+            onChangeValue[index]["name"] = value + "-" + index;
+        }
+
         setSelectedItem(value);
         setInputs(onChangeValue);
-        inputToJson();
+        
+        updateToParent();
     }
 
-    function inputToJson(){
-        const  strJson = JSON.stringify(inputs);
-        console.log("JSON string" + strJson);
+    function updateToParent(){
+        childToParent(inputs);
     }
 
     return (
         <div className="csp-params-input-container">
             {inputs.map((csp, index) => (
                 <div className="csp-params-inputs align-seven-vertical-elements" key={index}>
-                    {/*<p>{csp.type}</p>*/}
                     <input
+                        id="cspParamInputName"
+                        name="name"
+                        value={csp.name}
+                        type="hidden"/>
+
+                    <select
                         id="cspParamInputType"
                         name="type"
-                        type="text"
                         value={csp.type}
-                        onChange={(event) => handleChange(event, index)}
-                    />
+                        onChange={(event) => handleSelect(event, index)}>
+                        <option disabled="true" value="">Kies functie</option>
+                        {functionTypes.map((functionType) => <option key={functionType.type} value={functionType.type}>{functionType.labelNl}</option> )}
+
+                    </select>
+
                     <input
                         id="cspParamInputPavementWidth"
                         name="pavementWidth"
@@ -74,24 +88,13 @@ export default function AddCrossSectionParts(childToParent) {
                         value={csp.pavementWidth}
                         onChange={(event) => handleChange(event, index)}
                     />
-                    {/*<input*/}
-                    {/*    id="cspParamInputTypePavement"*/}
-                    {/*    name="typePavement"*/}
-                    {/*    type="text"*/}
-                    {/*    value={csp.typePavement}*/}
-                    {/*    onChange={(event) => handleChange(event, index)}*/}
-                    {/*/>*/}
-
-                    <DynamicDropDown
-                        options = {functionTypes}
-                        optionsValue =
-                    />
 
                     <select
+                        id = "cspParamInputTypePavement"
                         name = "typePavement"
-                        id = "typePavement"
-                        value={selectedItem}
+                        value={csp.typePavement}
                         onChange={(event) => handleSelect(event, index)}>
+                        <option disabled="true" value="">Kies verharding</option>
                         <option value="Elements">Elementen</option>
                         <option value="Asphalt">Asfalt</option>
                         <option value="Concrete">Beton</option>

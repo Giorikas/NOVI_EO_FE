@@ -15,12 +15,12 @@ export default function ProjectPage() {
 
     const baseURL = 'http://localhost:8080/projects';
     const { id } = useParams();
-    const [projectData, setProjectData] = useState({});
+    const [projectData, setProjectData] = useState({ crossSections: []});
 
     // Project (CrossSections Params: cs=crossSection; csp = crossSectionPart)
     const [csParamLeftBorder, setCsParamLeftBorder] = useState('');
     const [csParamRightBorder, setCsParamRightBorder] = useState('');
-    const [csParamWidth, setCsParamWidth] = useState(0.0);
+    const [csParamWidth, setCsParamWidth] = useState(17.5);
     const [cspParameters, setCspParameters] = useState([{
         cspName: "",
         type: "",
@@ -57,14 +57,12 @@ export default function ProjectPage() {
     // Child to Parent Functions....:
         // CS Borders:
         const leftBorder = (crossSectionBordersData) => {setCsParamLeftBorder(crossSectionBordersData);}
-        console.log("Projectpage L: "+ csParamLeftBorder)
+        // console.log("Projectpage L: "+ csParamLeftBorder)
         const rightBorder = (crossSectionBordersData) => {setCsParamRightBorder(crossSectionBordersData);}
-        console.log("Projectpage R: "+ csParamRightBorder)
+        // console.log("Projectpage R: "+ csParamRightBorder)
         const csWidth = (crossSectionBordersData) => {setCsParamWidth(crossSectionBordersData);}
-        console.log("Projectpage W: "+ csParamWidth)
-
+        // console.log("Projectpage W: "+ csParamWidth)
         const crossSectionToProject = (crossSectionToProjectData) => {setCspParameters(crossSectionToProjectData);}
-        console.log(cspParameters);
 
         // CS Params:
         //const cspParams = (index, isDelete, crossSectionPartData) => {handleCrossSectionParts(index, isDelete,
@@ -75,7 +73,15 @@ export default function ProjectPage() {
         console.log(isRoleTraffic);
     }
 
-    // function handleCrossSectionParts(index, isDelete, crossSectionPartData){}
+    function handleSubmitCspJSON(){
+        console.log(cspParameters)
+
+        const result = axios.post('http://localhost:8080/crossSections', cspParameters );
+
+        // const  strJson = JSON.stringify(cspParameters);
+        // console.log("JSON string" + cspParameters);
+    }
+
 
     return (
         <>
@@ -105,7 +111,7 @@ export default function ProjectPage() {
 
                         <div className="function-titles align-seven-vertical-elements">
 
-                            <p>Naam</p>
+                            {/*<p>Naam</p>*/}
                             <p>Functie</p>
                             <p>Breedte</p>
                             <p>Deklaag</p>
@@ -117,14 +123,18 @@ export default function ProjectPage() {
                         <div className="csp-left-filler"></div>
                         <div className="cross-section-parts-table">
                             <AddCrossSectionParts
-                                childToParent ={crossSectionToProject}/>
+                                childToParent={crossSectionToProject}/>
                         </div>
 
                     </div>
                     <div className="cross-section-parameters-right">
                         <div className="buttons-area">
-                            <CustomButton type="button" disabled={false} >
+                            <CustomButton type="button"
+                                          disabled={false}
+                                          onClick={handleSubmitCspJSON}
+                                              >
                                 <span className="material-icons">thumb_up</span>
+
                             </CustomButton>
 
                         </div>

@@ -27,6 +27,9 @@ export default function DynamicDropDown(props) {
 
                 <option disabled={true} value="">{props.placeholder}</option>
                 {objOptions.map((options) => <option key={options[keyDropDown]} value={options[valueDropDown]}>{options[valueDropDown]}</option>)}
+
+                {/*T.Z.T. UITBREIDEN met mogelijkheid om aparte labels mee tegeven; ander key-value paar uit bronobject*/}
+
             </select>
         </div>
     )

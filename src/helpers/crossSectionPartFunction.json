@@ -1,51 +1,50 @@
 [
         {
             "type": "footpath",
-            "label-nl": "voetpad",
+            "labelNl": "voetpad",
             "defaultWidth": 1.20,
             "defaultMaterial": "elementenverharding"
         },
         {
             "type": "sideway",
-            "label-nl": "trottoir",
+            "labelNl": "trottoir",
             "defaultWidth": 2.10,
             "defaultMaterial": "elementenverharding"
         },
         {
             "type": "bicycleLane",
-            "label-nl": "fietsstrook",
+            "labelNl": "fietsstrook",
             "defaultWidth": 1.50,
             "defaultMaterial": "asfalt"
         },
         {
             "type": "cyclePath",
-            "label-nl": "fietspad één richting",
+            "labelNl": "fietspad één richting",
             "defaultWidth": 2.50,
             "defaultMaterial": "asfalt"
         },
         {
             "type": "cyclePath2Way",
-            "label-nl": "fietspad twee richtingen",
+            "labelNl": "fietspad twee richtingen",
             "defaultWidth": 3.50,
             "defaultMaterial": "asfalt"
         },
         {
             "type": "corridor",
-            "label-nl": "rijstrook",
+            "labelNl": "rijstrook",
             "defaultWidth": 3.25,
             "defaultMaterial": "asfalt"
         },
         {
             "type": "roadVerge",
-            "label-nl": "berm (groen)",
+            "labelNl": "berm (groen)",
             "defaultWidth": 2.00,
             "defaultMaterial": ""
         },
         {
             "type": "roadVergePaved",
-            "label-nl": "berm (vehard)",
+            "labelNl": "berm (vehard)",
             "defaultWidth": 2.00,
             "defaultMaterial": "elementenverharding"
         }
     ]
-}
