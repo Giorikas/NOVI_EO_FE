@@ -1,8 +1,8 @@
 import './AddCrossSectionParts.css'
 
 import { useState } from "react";
-import crossSectionPartPavementTypes from "../../helpers/crossSectionPartPavementTypes.json"
-import crossSectionPartFunction from "../../helpers/crossSectionPartFunction.json"
+import crossSectionPartPavementTypes from "../../data/crossSectionPartPavementTypes.json"
+import crossSectionPartFunction from "../../data/crossSectionPartFunction.json"
 
 
 
@@ -77,7 +77,6 @@ export default function AddCrossSectionParts({childToParent}) {
                         onChange={(event) => handleSelect(event, index)}>
                         <option disabled="true" value="">Kies functie</option>
                         {functionTypes.map((functionType) => <option key={functionType.type} value={functionType.type}>{functionType.labelNl}</option> )}
-
                     </select>
 
                     <input
@@ -98,7 +97,6 @@ export default function AddCrossSectionParts({childToParent}) {
                         <option value="Elements">Elementen</option>
                         <option value="Asphalt">Asfalt</option>
                         <option value="Concrete">Beton</option>
-
                     </select>
 
                     <input
@@ -118,19 +116,17 @@ export default function AddCrossSectionParts({childToParent}) {
                         onChange={(event) => handleChange(event, index)}
                     />
 
-
-
                     <section className="csp-params-input-btn">
 
                     {index === inputs.length - 1 && (
-                        <p onClick={() => handleAddInput()}>
+                        <button onClick={() => handleAddInput()}>
                             <span className="material-icons">add_road</span>
-                        </p>
+                        </button>
                     )}
                     {inputs.length > 1 && (
-                        <p className="delete-button" onClick={() => handleDeleteInput(index)}>
+                        <button className="delete-button" onClick={() => handleDeleteInput(index)}>
                             <span className="material-icons">remove_road</span>
-                        </p>
+                        </button>
                     )}
                     </section>
                 </div>

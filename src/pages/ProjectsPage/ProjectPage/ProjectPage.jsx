@@ -1,5 +1,5 @@
 import './ProjectPage.css'
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState, prevState, useContext} from "react";
 
@@ -9,14 +9,16 @@ import DynamicDropDown from "../../../components/dynamicDropDown/DynamicDropDown
 import NumericInput from "../../../components/numericInput/NumericInput.jsx";
 import CustomButton from "../../../components/custombutton/CustomButton.jsx";
 import AddCrossSectionParts from "../../../components/addCrossSectionParts/AddCrossSectionParts.jsx";
-import {crossSectionBorderTypes} from '../../../helpers/crossSectionBorderTypes';
+import {crossSectionBorderTypes} from '../../../data/crossSectionBorderTypes.js';
+
+//Helper(s)
+import autoNameCrossectionInProject from "../../../helpers/autoNameCrossectionInProject.js";
 
 export default function ProjectPage() {
 
     const baseURL = 'http://localhost:8080/projects';
-    const { id } = useParams();
-    const [projectData, setProjectData] = useState({ crossSections: []});
-
+    const {id} = useParams();
+    const [projectData, setProjectData] = useState({crossSections: []});
     // Project (CrossSections Params: cs=crossSection; csp = crossSectionPart)
     const [csParamLeftBorder, setCsParamLeftBorder] = useState('');
     const [csParamRightBorder, setCsParamRightBorder] = useState('');
@@ -33,12 +35,13 @@ export default function ProjectPage() {
     //Array Fillers for Dynamic Dropdowns:
     const borderTypes = crossSectionBorderTypes(); // Array of Objects of crossectionParts
 
-// Switch to test site with roles:
+    // Switch to test site with roles:
     const [isRoleTraffic, setIsRoleTraffic] = useState(true);
 
-// let project = projectBarProjects[id];
 
-    useEffect(()=> {
+    // let project = projectBarProjects[id];
+
+    useEffect(() => {
 
         async function fetchProject() {
             try {
@@ -48,40 +51,53 @@ export default function ProjectPage() {
                 console.error(e);
             }
         }
-    fetchProject().then(/* rebind pagina */);
-    // passing r.data to object.
-    // setCspParameters(r.data);
 
-    },[DynamicDropDown, NumericInput])
+        fetchProject().then(/* rebind pagina */);
+        // passing r.data to object.
+        // setCspParameters(r.data);
+
+    }, [DynamicDropDown, NumericInput, AddCrossSectionParts])
 
     // Child to Parent Functions....:
-        // CS Borders:
-        const leftBorder = (crossSectionBordersData) => {setCsParamLeftBorder(crossSectionBordersData);}
-        // console.log("Projectpage L: "+ csParamLeftBorder)
-        const rightBorder = (crossSectionBordersData) => {setCsParamRightBorder(crossSectionBordersData);}
-        // console.log("Projectpage R: "+ csParamRightBorder)
-        const csWidth = (crossSectionBordersData) => {setCsParamWidth(crossSectionBordersData);}
-        // console.log("Projectpage W: "+ csParamWidth)
-        const crossSectionToProject = (crossSectionToProjectData) => {setCspParameters(crossSectionToProjectData);}
+    // CS Borders:
+    const leftBorder = (crossSectionBordersData) => {
+        setCsParamLeftBorder(crossSectionBordersData);
+    }
+    const rightBorder = (crossSectionBordersData) => {
+        setCsParamRightBorder(crossSectionBordersData);
+    }
+    const csWidth = (crossSectionBordersData) => {
+        setCsParamWidth(crossSectionBordersData);
+    }
+    const crossSectionToProject = (crossSectionToProjectData) => {
+        setCspParameters(crossSectionToProjectData);
+    }
 
-        // CS Params:
-        //const cspParams = (index, isDelete, crossSectionPartData) => {handleCrossSectionParts(index, isDelete,
-        // crossSectionPartData)}
-
-    function handleBtnClick(){
+    function handleBtnClick() {
         setIsRoleTraffic(!isRoleTraffic);
         console.log(isRoleTraffic);
     }
 
-    function handleSubmitCspJSON(){
+    function handleSubmitCrossSection() {
+        let crossSectionBoundaries = {
+            name: autoNameCrossectionInProject(projectData.name, 1),
+            status: projectData.status,
+            leftBorder: csParamLeftBorder.toUpperCase(),
+            rightBorder: csParamRightBorder.toUpperCase(),
+            width: csParamWidth
+        }
+        console.log(crossSectionBoundaries)
+        axios.post('http://localhost:8080/crossSections', crossSectionBoundaries);
+    }
+
+    function handleSubmitCspJSON() {
         console.log(cspParameters)
 
-        const result = axios.post('http://localhost:8080/crossSections', cspParameters );
+        const result = axios.post('http://localhost:8080/crossSections', cspParameters);
 
         // const  strJson = JSON.stringify(cspParameters);
         // console.log("JSON string" + cspParameters);
     }
-
 
     return (
         <>
@@ -93,18 +109,30 @@ export default function ProjectPage() {
                 </div>
                 <div className="cross-section-borders">
                     <DynamicDropDown
-                        options = {borderTypes} optionsValue = "type" name = "leftBorder" placeholder = "Linker Grens" id = "leftBorderTypeSelector"
-                        labelTxt = "Van: " childToParent = {leftBorder}
+                        options={borderTypes} optionsValue="type" name="leftBorder" placeholder="Linker Grens"
+                        id="leftBorderTypeSelector"
+                        labelTxt="Van: " childToParent={leftBorder}
                     />
                     <DynamicDropDown
-                        options = {borderTypes} optionsValue = "type" name = "rightBorder" placeholder = "Rechter Grens" id = "RightBorderTypeSelector"
-                        labelTxt = "tot: "
-                        childToParent = {rightBorder}
+                        options={borderTypes} optionsValue="type" name="rightBorder" placeholder="Rechter Grens"
+                        id="RightBorderTypeSelector"
+                        labelTxt="tot: "
+                        childToParent={rightBorder}
                     />
                     <NumericInput
-                        id = "crossSectionWidth" step=".05" startValue="17.50" childToParent = {csWidth}
-                        labelTxt = "is de afstand:" suffix = "meter"
+                        id="crossSectionWidth" step=".05" startValue="17.50" childToParent={csWidth}
+                        labelTxt="is de afstand:" suffix="meter"
                     />
+
+                    <CustomButton type="button"
+                                  disabled={false}
+                                  onClick={handleSubmitCrossSection}
+                    >
+                        <span className="material-icons">thumb_up</span>
+
+                    </CustomButton>
+
+
                 </div>
                 <section id="cross-section-parameters">
                     <div className="cross-section-parameters-left">
@@ -132,7 +160,7 @@ export default function ProjectPage() {
                             <CustomButton type="button"
                                           disabled={false}
                                           onClick={handleSubmitCspJSON}
-                                              >
+                            >
                                 <span className="material-icons">thumb_up</span>
 
                             </CustomButton>
