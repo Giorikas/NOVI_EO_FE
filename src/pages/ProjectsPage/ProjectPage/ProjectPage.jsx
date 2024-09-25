@@ -37,8 +37,6 @@ export default function ProjectPage() {
 
     // Switch to test site with roles:
     const [isRoleTraffic, setIsRoleTraffic] = useState(true);
-
-
     // let project = projectBarProjects[id];
 
     useEffect(() => {
@@ -87,13 +85,13 @@ export default function ProjectPage() {
             width: csParamWidth
         }
         console.log(crossSectionBoundaries)
-        axios.post('http://localhost:8080/crossSections', crossSectionBoundaries);
+        axios.post(`${baseURL}/${id}/crossSections`,crossSectionBoundaries);
     }
 
     function handleSubmitCspJSON() {
         console.log(cspParameters)
 
-        const result = axios.post('http://localhost:8080/crossSections', cspParameters);
+        axios.post(`${baseURL}/${id}/crossSections/crossSectionParts`, cspParameters);
 
         // const  strJson = JSON.stringify(cspParameters);
         // console.log("JSON string" + cspParameters);
@@ -102,6 +100,7 @@ export default function ProjectPage() {
     return (
         <>
             <h2>{projectData.name}</h2>
+            <h4>Status: {(projectData.status)}</h4>
             <fieldset>
                 <legend>Opbouw Dwarsprofiel</legend>
                 <div className="flex-row-center">
