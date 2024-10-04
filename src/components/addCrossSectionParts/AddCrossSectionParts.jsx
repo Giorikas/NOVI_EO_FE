@@ -1,9 +1,8 @@
 import './AddCrossSectionParts.css'
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import crossSectionPartPavementTypes from "../../data/crossSectionPartPavementTypes.json"
 import crossSectionPartFunction from "../../data/crossSectionPartFunction.json"
-
 
 
 export default function AddCrossSectionParts({childToParent}) {
@@ -15,6 +14,8 @@ export default function AddCrossSectionParts({childToParent}) {
     // console.log(pavementTypes)
 
     const [inputs, setInputs] = useState([{ name: "", type: "", pavementWidth: "", typePavement: "", designVelocity: 30, intensities: 0}]);
+
+    useEffect(()=>{}, [updateToParent()])
 
     const handleAddInput = () => {
         setInputs([...inputs, { name:"", type: "", pavementWidth: "", typePavement: "", designVelocity: 30,
@@ -89,14 +90,12 @@ export default function AddCrossSectionParts({childToParent}) {
                     />
 
                     <select
-                        id = "cspParamInputTypePavement"
-                        name = "typePavement"
-                        value={csp.typePavement}
+                        id = "cspParamInputPavementType"
+                        name = "pavementType"
+                        value={csp.pavementType}
                         onChange={(event) => handleSelect(event, index)}>
                         <option disabled="true" value="">Kies verharding</option>
-                        <option value="Elements">Elementen</option>
-                        <option value="Asphalt">Asfalt</option>
-                        <option value="Concrete">Beton</option>
+                        {pavementTypes.map((pavementType) => <option key={pavementType.type} value={pavementType.type}>{pavementType.type}</option> )}
                     </select>
 
                     <input
@@ -132,7 +131,6 @@ export default function AddCrossSectionParts({childToParent}) {
                 </div>
             ))}
         </div>
-
     );
 }
 

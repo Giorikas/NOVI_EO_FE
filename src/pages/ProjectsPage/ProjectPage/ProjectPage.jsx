@@ -12,22 +12,27 @@ import AddCrossSectionParts from "../../../components/addCrossSectionParts/AddCr
 import {crossSectionBorderTypes} from '../../../data/crossSectionBorderTypes.js';
 
 //Helper(s)
-import autoNameCrossectionInProject from "../../../helpers/autoNameCrossectionInProject.js";
+import autoNameCrossSectionInProject from "../../../helpers/autoNameCrossSectionInProject.js";
+//Helper(s) data
+import enumToTitleCase from "../../../helpers/enumToTitelCase"
+import fetchCrossSection from "../../../helpers/data/fetchCrossSection";
+import {useFetchData} from "../../../helpers/data/useFetchData.jsx";
 
 export default function ProjectPage() {
 
     const baseURL = 'http://localhost:8080/projects';
     const {id} = useParams();
     const [projectData, setProjectData] = useState({crossSections: []});
-    // Project (CrossSections Params: cs=crossSection; csp = crossSectionPart)
+    const [crossSectionData, setCrossSectionData] = useState(null)
+    const [crossSection, setCrossSection] = useState({id: null,})
     const [csParamLeftBorder, setCsParamLeftBorder] = useState('');
     const [csParamRightBorder, setCsParamRightBorder] = useState('');
     const [csParamWidth, setCsParamWidth] = useState(17.5);
     const [cspParameters, setCspParameters] = useState([{
-        cspName: "",
+        name: "",
         type: "",
         pavementWidth: 0.0,
-        typePavement: "",
+        pavementType: "",
         designVelocity: 0,
         intensities: 0
     }]);
@@ -44,7 +49,10 @@ export default function ProjectPage() {
         async function fetchProject() {
             try {
                 const r = await axios.get(`${baseURL}/${id}`);
+
                 setProjectData(r.data);
+                console.log("FetchProject:")
+                console.log(r.data)
             } catch (e) {
                 console.error(e);
             }
@@ -53,8 +61,18 @@ export default function ProjectPage() {
         fetchProject().then(/* rebind pagina */);
         // passing r.data to object.
         // setCspParameters(r.data);
+        fetchCrossSection().then();
+
 
     }, [DynamicDropDown, NumericInput, AddCrossSectionParts])
+
+    const CsData = useFetchData(`${baseURL}/${id}/crossSections`, "get", "", {});
+    console.log("HOOK data:")
+    console.log(CsData.data)
+
+    const pData = useFetchData(`${baseURL}/${id}`, "get", "", {});
+    console.log("HOOK pData:")
+    console.log(pData.data)
 
     // Child to Parent Functions....:
     // CS Borders:
@@ -71,6 +89,8 @@ export default function ProjectPage() {
         setCspParameters(crossSectionToProjectData);
     }
 
+    // (Event) Handlers:
+
     function handleBtnClick() {
         setIsRoleTraffic(!isRoleTraffic);
         console.log(isRoleTraffic);
@@ -78,20 +98,35 @@ export default function ProjectPage() {
 
     function handleSubmitCrossSection() {
         let crossSectionBoundaries = {
-            name: autoNameCrossectionInProject(projectData.name, 1),
+            name: autoNameCrossSectionInProject(projectData.name, 1),
             status: projectData.status,
             leftBorder: csParamLeftBorder.toUpperCase(),
             rightBorder: csParamRightBorder.toUpperCase(),
             width: csParamWidth
         }
         console.log(crossSectionBoundaries)
-        axios.post(`${baseURL}/${id}/crossSections`,crossSectionBoundaries);
+        axios.post(`${baseURL}/${id}/crossSections`, crossSectionBoundaries);
     }
 
     function handleSubmitCspJSON() {
+        console.log(cspParameters.length)
+
+        sendRequest(cspParameters)
+
+        async function sendRequest(csp) {
+            for (let i = 0; i < csp.length; i++) {
+                axios.post(`${baseURL}/${id}/crossSectionParts`, csp[i]);
+            }
+        }
+
+        // const  strJson = JSON.stringify(cspParameters);
+        // console.log("JSON string" + cspParameters);
+    }
+
+    function handleSubmitCspArrayJSON() {
         console.log(cspParameters)
 
-        axios.post(`${baseURL}/${id}/crossSections/crossSectionParts`, cspParameters);
+        axios.post(`${baseURL}/${id}/crossSectionPartsArray`, cspParameters);
 
         // const  strJson = JSON.stringify(cspParameters);
         // console.log("JSON string" + cspParameters);
@@ -100,7 +135,7 @@ export default function ProjectPage() {
     return (
         <>
             <h2>{projectData.name}</h2>
-            <h4>Status: {(projectData.status)}</h4>
+            <h3>Status: {(projectData.status).toLowerCase()}</h3>
             <fieldset>
                 <legend>Opbouw Dwarsprofiel</legend>
                 <div className="flex-row-center">
@@ -163,7 +198,13 @@ export default function ProjectPage() {
                                 <span className="material-icons">thumb_up</span>
 
                             </CustomButton>
+                            <CustomButton type="button"
+                                          disabled={false}
+                                          onClick={handleSubmitCspArrayJSON}
+                            >
+                                <span className="material-icons">flood</span>
 
+                            </CustomButton>
                         </div>
                     </div>
                 </section>
